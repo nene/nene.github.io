@@ -1,53 +1,52 @@
-title:            Site Title
-tagline:          A short tagline
-description:      Describe your website.
+title:            Rene Saarsoo
+tagline:          Sekeldused Ruby ja JavaScriptiga
+description:      Sekeldused Ruby ja JavaScriptiga
 #Comment out url when working locally to resolve base urls correctly
-url:              http://your-site.com
+url:              http://nene.github.io
+#url:              http://localhost:4000
 
 # Owner/author information
 owner:
-  name:           Your Name
+  name:           Rene Saarsoo
   avatar:         bio-photo.jpg
-  bio:            "Describe your self."
-  email:          your@email.com
+  bio:            "Väike progeja."
+  email:          info@triin.net
   # Social networking links are used in author-bio sidebar. Update and remove as you like.
-  twitter:        
-  facebook:       
-  github:         
-  linkedin:       
-  instagram:      
-  lastfm:         
-  tumblr:         
+  twitter:
+  facebook:
+  github:
+  linkedin:
+  instagram:
+  lastfm:
+  tumblr:
   # For Google Authorship https://plus.google.com/authorship
-  google_plus:    
+  google_plus:
 
 # Analytics and webmaster tools stuff goes here
-google_analytics:   
-google_verify:      
+google_analytics:
+google_verify:
 # https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:        
+bing_verify:
 
 # Links to include in top navigation
 # For external links add external: true
 links:
-  - title: About
-    url: /about
-  - title: Articles
-    url: /articles
-  - title: Theme Setup
-    url: /theme-setup
-  - title: Made Mistakes
-    url: http://mademistakes.com
+  - title: Mina
+    url: /mina
+  - title: Kirjutised
+    url: /kirjutised
+  - title: Triin.net
+    url: http://triin.net
     external: true
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/New_York
+timezone:    Europe/Tallinn
 future:      true
 pygments:    true
 markdown:    kramdown
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink:   /:categories/:title
+permalink:   /:year/:month/:day/:title
 
 kramdown:
   auto_ids: true
@@ -57,7 +56,7 @@ kramdown:
   use_coderay: false
 
   coderay:
-    coderay_line_numbers: 
+    coderay_line_numbers:
     coderay_line_numbers_start: 1
     coderay_tab_width: 4
     coderay_bold_every: 10

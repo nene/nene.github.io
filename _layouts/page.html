@@ -15,7 +15,7 @@
 
 {% if page.image.feature %}<div class="image-wrap">
   <img src="{{ site.url }}/images/{{ page.image.feature }}" alt="{{ page.title }} feature image" itemprop="primaryImageOfPage">
-  {% if page.image.credit %}<span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>{% endif %}
+  {% if page.image.credit %}<span class="image-credit">Foto allikas: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>{% endif %}
 </div><!-- /.image-wrap -->{% endif %}
 
 <div id="main" role="main"  itemprop="mainContentOfPage">
@@ -36,7 +36,7 @@
   </footer>
 </div><!-- /.footer-wrap -->
 
-{% include scripts.html %}          
+{% include scripts.html %}
 
 </body>
 </html>
