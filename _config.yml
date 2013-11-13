@@ -9,12 +9,12 @@ url:              http://nene.github.io
 owner:
   name:           Rene Saarsoo
   avatar:         bio-photo.jpg
-  bio:            "Väike progeja."
+  bio:            "Väike töötu progeja."
   email:          info@triin.net
   # Social networking links are used in author-bio sidebar. Update and remove as you like.
-  twitter:
-  facebook:
-  github:
+  twitter:        renku
+  facebook:       rene.saarsoo
+  github:         nene
   linkedin:
   instagram:
   lastfm:
