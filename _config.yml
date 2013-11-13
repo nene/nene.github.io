@@ -56,4 +56,4 @@ kramdown:
   smart_quotes: ["8216", "8217", "8222", "8220"]
 
 include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+exclude: ["Makefile"]
