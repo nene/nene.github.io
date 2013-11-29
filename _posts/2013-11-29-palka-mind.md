@@ -61,7 +61,7 @@ pidanud seda õnnetut Photoshopi teemat puudutama.
 **Kuulutus:** Otsiti tugevat PHP arendajat, kellel lisaks ka
 JavaScripti/jQuery ning Linuxi oskusi.  Meeldivalt tõi kuulutus välja
 milliseid tehnoloogiaid ettevõte kasutab, millest jäid mulle
-positiivse märgina silma Mercurial ning Jenkins - seega võis loota
+positiivse märgina silma Mercurial ning Jenkins -- seega võis loota
 vähe professionaalsemale lähenemisele kui põlveotsas nokitsemine.
 Veelgi suurema boonusena toodi välja pakutav palganumber.
 
@@ -101,7 +101,7 @@ mulle anda test-ülesanne, et näha mis mees ma tegelikult olen.
 
 Hetkel on laual kaks kandidaati.  Momendil kaldun pigem RR Software
 poole, sest olgem ausad... ega see PHP perspektiiv mind nii väga nüüd
-ei lumma.  Kuid vaatame siiski ära ka test-ülesande - võimalus progeda
+ei lumma.  Kuid vaatame siiski ära ka test-ülesande -- võimalus progeda
 on alati tore :)
 
 
