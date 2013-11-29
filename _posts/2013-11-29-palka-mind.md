@@ -18,7 +18,7 @@ suuremamahulise **kampaaniaga:**
 ![Palka mind!]({{ site.url }}/images/palka-mind.jpg)
 
 Katkusin [cv.ee][] lahti ning saatsin oma pakkumise kõigile Tartus
-tegutsevatele IT ettevõtetele, kes midadigi sellist otsisid, milles ma
+tegutsevatele IT ettevõtetele, kes midagigi sellist otsisid, milles ma
 end kompetentsena tundsin.
 
 ## Front-end arendaja (Neway AD OÜ)
@@ -46,7 +46,7 @@ Photoshopinduse osas olen pigem Gimpija.
 ## Veebirakenduste arendaja (Beekman OÜ)
 
 **Kuulutus:** Taas umbes samasse auku, kuigi seekord jäeti Photoshop
-välja ja mainiti vaid WordPressi, ning öeldi märks konkreetsemalt, et
+välja ja mainiti vaid WordPressi, ning öeldi märksa konkreetsemalt, et
 tööülesanneteks on "veebikujunduste kodeerimine" ning "WordPress
 kujundusmallide loomine".  Selle selguse eest neile pluss.
 
@@ -72,14 +72,14 @@ ning JavaScripti kogemus on mul päris-päris hea.
 rõõmuks selgus, et tegelikult plaanivad nad PHP suuremalt jaolt
 kõrvale lükata ning rohkem JavaScripti peale suunduda.  Üldse toimus
 kogu ettevõtte uuskäivitamine, mis kõik tundus tore ja erutav.  Ka
-interviueerija paistis minuga väga rahule jäävat ning leppisime kokku
+intervjueerija paistis minuga väga rahule jäävat ning leppisime kokku
 esialgses palgaski.  Ainuke puudus, et oma uue kontori plaanisid nad
 avada kaugel-kaugel linna servas teaduspargi hoones.
 
 ## Tarkvara vanemarendaja (Titanium Systems OÜ)
 
 **Kuulutus:** Paistis, et tegemist on ühe suure ja kolaka projektiga,
-kus on palju-palju erinevaid featuure ning ammust pärand-kraami
+kus on palju-palju erinevaid lahendusi ning ammust pärand-kraami
 (*legacy shit*).  Vajati tugevat PHP programmeerijat, kes oleks
 ühtlasi juhiks noorematele meestele.
 
