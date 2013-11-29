@@ -6,9 +6,8 @@ modified: 2013-11-29
 category: articles
 tags: []
 image:
-  feature: texture-feature-05.jpg
-  credit: Texture Lovers
-  creditlink: http://texturelovers.com
+  feature: palka-mind-bg.jpg
+  credit: Mina ise
 ---
 
 Kuna hoolimata minu ponnistustest [Fortumos][] ei läinud mu petuskeem
