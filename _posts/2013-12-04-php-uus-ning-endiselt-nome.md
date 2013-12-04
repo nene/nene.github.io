@@ -70,21 +70,21 @@ $squares = array_map([1, 2, 3], function($x) { return $x * $x; });
 Ning siis võime välja kutsuda ka olemasolevaid funktsioone:
 
 {% highlight php startinline %}
-$squares = array_map(abs, [-1, 2, 3]);
+$positives = array_map(abs, [-1, 2, 3]);
 
 // VIGA: funktsioonid tuleb edastada stringina:
 
-    $squares = array_map("abs", [-1, 2, 3]);
+    $positives = array_map("abs", [-1, 2, 3]);
 {% endhighlight %}
 
 Või mõne objekti meetodi:
 
 {% highlight php startinline %}
-$squares = array_map($math->abs, [-1, 2, 3]);
+$positives = array_map($math->abs, [-1, 2, 3]);
 
 // VIGA: Meetodid tuleb edastada massiivina:
 
-    $squares = array_map([$math, "abs"], [-1, 2, 3]);
+    $positives = array_map([$math, "abs"], [-1, 2, 3]);
 {% endhighlight %}
 
 
