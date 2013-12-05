@@ -2,7 +2,7 @@
 layout: post
 title: Palka mind!
 description: "Suurem töölesaamise kampaania."
-modified: 2013-11-29
+modified: 2013-12-05
 category: articles
 tags: []
 image:
@@ -40,7 +40,8 @@ pikem, aga mitte oluliselt sisukam.
 **Mina:** Reklaamisin end taas kui kõige selle spetsialisti, ehkki
 Photoshopinduse osas olen pigem Gimpija.
 
-**Vastus:** Vaikus.
+**Vastus:** Nädal aega vaikust.  Seejärel helistati ja kutsuti
+intervjuule.
 
 ## Veebirakenduste arendaja (Beekman OÜ)
 
