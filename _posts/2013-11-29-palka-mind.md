@@ -2,7 +2,7 @@
 layout: post
 title: Palka mind!
 description: "Suurem töölesaamise kampaania."
-modified: 2013-12-05
+modified: 2014-01-02
 category: articles
 tags: []
 image:
@@ -41,7 +41,16 @@ pikem, aga mitte oluliselt sisukam.
 Photoshopinduse osas olen pigem Gimpija.
 
 **Vastus:** Nädal aega vaikust.  Seejärel helistati ja kutsuti
-intervjuule.
+intervjuule.  Läksin kohale Plasku kontorisse, kus teatati, et
+jutuajamine toimub *in English*, testimaks minu keeleoskust.  Minul
+muidugi inglismannide keeles rääkimisega probleeme polnud, küll aga
+oli mul villand kogu sellest inglisekeelses keskkonnas töötamisest.
+Ning perspektiiv, et seda saab uues töökohas taas kord ohtralt olema,
+ei paelunud mind just kuigivõrd.  Lisaks selgus jutu käigus, et
+ettevõtte üheks tegevusalaks on DRM tehnoloogia arendamine, mis mulle
+aga ideoloogiliselt täiesti vastukarva.  Kirjutasin neile järgmisel
+päeval vastuseks, et minu sellele DRM värgile kaasa ei aita, ning
+neile rohkem ei kandideeri.
 
 ## Veebirakenduste arendaja (Beekman OÜ)
 
@@ -94,16 +103,23 @@ keerukas süsteem, mis suhtleb üle XML protokollide erinevate
 klientidega.  Skaleerumisprobleemid.  Kogukas pärand.  Positiivse
 poole pealt kasutasid nad Git-i ning näisid pürgivat väledate
 meetodite edukama kasutamise suunas, ning peagi pidi valmima uus vahva
-progemiskontor otse minu lähedal kesklinnas.  Alustuseks aga lubati
-mulle anda test-ülesanne, et näha mis mees ma tegelikult olen.
+progemiskontor otse minu lähedal kesklinnas.  Alustuseks anti mulle ka
+test-ülesanne, mis pani mind taas kord mõtteid mõlgutama [PHP keele
+nõmeduse üle][PHP].  Ülesande sooritasin aga maksimumpunktidele ning
+ka hiljem kontoris koha peal tehtud JavaScripti progremine oli igati
+edukas, mispeale nad mulle ka tööpakkumise tegid.
 
-## Seega...
+## Valikud valikud...
 
-Hetkel on laual kaks kandidaati.  Momendil kaldun pigem RR Software
-poole, sest olgem ausad... ega see PHP perspektiiv mind nii väga nüüd
-ei lumma.  Kuid vaatame siiski ära ka test-ülesande -- võimalus progeda
-on alati tore :)
+Lauale jäi seega kaks kandidaati.  Tundsin, et parem oleks minna
+väiksesse paadikesse, mille suunda saan ehk rohkem ja kergemini
+mõjutada, kui et üritan ennast teostada suures PHP-aurikus.
 
+Ja nii langetasin otsuse RR Software Services kasuks...
+
+...oleks ma vaid teadnud, [mis mind seal ees ootab.][kood]
 
 [Fortumos]: /2013/11/13/fortumo-test-ulesanne/
 [cv.ee]: http://cv.ee
+[PHP]: /2013/12/04/php-uus-ning-endiselt-nome/
+[kood]: /2013/12/17/ports-uleliigset-koodi/
