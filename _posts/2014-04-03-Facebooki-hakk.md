@@ -155,7 +155,7 @@ osas midagi ette võtta, ning siiamaani on olnud lihtsalt suurema
 prioriteediga rangemat tüübikontrolli ja kiiremat koodi toetavad
 featuurid.
 
-Iagatahes on Hack on kahtlemata parem häkk kui PHP.
+Igatahes on Hack juba praegu palju parem häkk kui PHP.
 
 [Hack]: http://hhvm.com/
 
