@@ -24,9 +24,11 @@ võimalustega.  Parim mida PHP selle koha pealt suudab on nõuda, et
 funktsiooni parameetrid oleksid teatava klassi instantsid, massiivid
 või funktsiooni-objektid:
 
-    function test_class(MyClass $obj) { }
-    function test_array(array $arr) { }
-    function test_func(callable $fn) { }
+{% highlight php startinline %}
+function test_class(MyClass $obj) { }
+function test_array(array $arr) { }
+function test_func(callable $fn) { }
+{% endhighlight %}
 
 Olulise piiranguna aga ei saa nõuda, et parameeter oleks string või
 number, mis on pehmelt öeldes elementaarne puudujääk.
@@ -34,15 +36,17 @@ number, mis on pehmelt öeldes elementaarne puudujääk.
 Hack lahendab selle probleemi, ja võimaldab tüüpida ka funktsioonide
 tagastatavad väärtused ning klasside atribuudid:
 
-    class MyClass {
-        const int MY_CONST = 0;
+{% highlight php startinline %}
+class MyClass {
+    const int MY_CONST = 0;
 
-        private string $x = "";
+    private string $x = "";
 
-        public function increment(int $x): int {
-            return $x + 1;
-        }
+    public function increment(int $x): int {
+        return $x + 1;
     }
+}
+{% endhighlight %}
 
 ## Hüvasti nullid
 
@@ -54,37 +58,45 @@ Kui näiteks tahame lubada, et eeldoodud `increment` meetodi
 parameetriks saab anda ka nulli, siis peame seda spetsiaalse
 süntaksiga märkima:
 
-    public function increment(?int $x): int {
-        return $x + 1;
-    }
+{% highlight php startinline %}
+public function increment(?int $x): int {
+    return $x + 1;
+}
+{% endhighlight %}
 
 Sellise koodi peale pistab aga Hacki tüübikontrollija kisama, sest `+`
 operaatorit ei saa nulliga kasutada.  Peame lisama kontrolli juhuks
 kui `$x` on `null`.
 
-    public function increment(?int $x): int {
-        if (is_null($x)) {
-            return 1;
-        }
-        return $x + 1;
+{% highlight php startinline %}
+public function increment(?int $x): int {
+    if (is_null($x)) {
+        return 1;
     }
+    return $x + 1;
+}
+{% endhighlight %}
 
 ## Normaalsed massiivid ja lambdad
 
 Vanasti käis massiividega arveldamine PHP-s `array()` konstruktsiooni
 ja `foreach` tsükli abil:
 
-    $numbers = array(1, 2, 3, 4);
-    $squares = array();
-    foreach ($numbers as $x) {
-        $squares[] = $x * $x;
-    }
+{% highlight php startinline %}
+$numbers = array(1, 2, 3, 4);
+$squares = array();
+foreach ($numbers as $x) {
+    $squares[] = $x * $x;
+}
+{% endhighlight %}
 
 Tänapäeval saab massiivid kirja panna nurksulgude vahele ning
 `array_map()`-i ja anonüümse funktsiooni abil kenasti transformeerida:
 
-    $numbers = [1, 2, 3, 4];
-    $squares = array_map(function($x) { return $x * $x; }, $numbers);
+{% highlight php startinline %}
+$numbers = [1, 2, 3, 4];
+$squares = array_map(function($x) { return $x * $x; }, $numbers);
+{% endhighlight %}
 
 Hack toob keelde juurde aga uue kollektsioonide kogu, kus on eraldi
 andmetüüp massiivide (`Vector`) ja räsitabelite (`Map`) jaoks.
@@ -95,8 +107,10 @@ ja arusaadav komplekt meetodeid.
 PHP anonüümsetele funktsioonidele pakub Hack aga välja lihtsama ja
 lühema alternatiivse süntaksi:
 
-    $numbers = Vector {1, 2, 3, 4};
-    $squares = $numbers->map( $x ==> $x * $x );
+{% highlight php startinline %}
+$numbers = Vector {1, 2, 3, 4};
+$squares = $numbers->map( $x ==> $x * $x );
+{% endhighlight %}
 
 Oli ka aeg.  Ma pole siiamaani suutnud meelde jätta, et
 `array_filter()` võtab esimese argumendina funktsiooni ning
@@ -123,11 +137,13 @@ Näiteks on PHP-s 2 funktsiooni stringide ühendamiseks (`implode` ja
 
 Ei ole ju palju tahta üht lihtsat stringi API-t nagu:
 
-    $s = "Hello, world!";
+{% highlight php startinline %}
+$s = "Hello, world!";
 
-    $s->split("/ /");
+$s->split("/ /");
 
-    $s->replace("/replace-me/", "with this");
+$s->replace("/replace-me/", "with this");
+{% endhighlight %}
 
 PHP stringid on küll primitiivsed andmetüübid mitte objektid, aga ei
 tohiks olla ju eriti keerukas implementeerida automaatne stringi
