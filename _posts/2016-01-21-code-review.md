@@ -11,6 +11,8 @@ image:
     creditlink: http://texturelovers.com
 ---
 
+*This is a repost of XRebel frontend code reviewing guide, posted initially to internal wiki.*
+
 An amazing code review is really a result of a <del>battle</del> cooperation between the author and the reviewer...
 
 ## Writing code that passes the review (a.k.a. how to pretend you're a wizard)
