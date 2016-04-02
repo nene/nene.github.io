@@ -6,9 +6,7 @@ modified: 2016-04-02
 category: articles
 tags: []
 image:
-    feature: lebab-ast.jpg
-    credit: Texture Lovers
-    creditlink: http://texturelovers.com
+    feature: lebab-ast.png
 ---
 
 While developing [Lebab][], major part of the work is detecting patterns in source code.
