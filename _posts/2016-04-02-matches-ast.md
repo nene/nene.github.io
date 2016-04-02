@@ -85,7 +85,7 @@ The popular [Lodash][] library provides a function [`_.matches`][matches] that d
 We can give it our AST pattern and it creates a function that matches against it:
 
 {% highlight js %}
-const isRequire = \_.matches({
+const isRequire = _.matches({
     "type": "VariableDeclaration",
     "declarations": [
         {
@@ -139,7 +139,7 @@ Here's our custom `matches()` function:
 {% highlight js %}
 function matches(pattern) {
     return (ast) => {
-        return \_.isMatchWith(ast, pattern, (value, matcher) => {
+        return _.isMatchWith(ast, pattern, (value, matcher) => {
             // When comparing against function, execute the function
             if (typeof matcher === 'function') {
                 return matcher(value);
@@ -273,7 +273,7 @@ function matches(pattern) {
     return (ast) => {
         const extractedFields = {};
 
-        const matches = \_.isMatchWith(ast, pattern, (value, matcher) => {
+        const matches = _.isMatchWith(ast, pattern, (value, matcher) => {
             // When comparing against function, execute the function
             if (typeof matcher === 'function') {
                 const result = matcher(value);
