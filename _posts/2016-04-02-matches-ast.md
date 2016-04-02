@@ -70,7 +70,7 @@ function isRequire(node) {
 }
 {% endhighlight %}
 
-That's straight-forward to write, but damn hard to read.
+That's straightforward to write, but damn hard to read.
 Even while looking at the AST above, it's hard to tell whether it's matching it correctly.
 
 ## Pattern matching to the rescue
@@ -113,7 +113,7 @@ const isRequire = _.matches({
 });
 {% endhighlight %}
 
-With all the conditional logic gone, it's now straight-forward to understand what this function matches.
+With all the conditional logic gone, it's now straightforward to understand what this function matches.
 
 ## Pattern matching extended
 
@@ -235,7 +235,7 @@ if (isRequire(node)) {
 
 But wait...
 These `node.declarations[0].init.arguments[0]` expressions are just like the ones we tried to eliminate.
-It's not quite bad as the initial matcher function,
+It's not quite as bad as the initial matcher function,
 but we're partly repeating the AST that we already specified in the matcher function.
 
 What if we could simply label the things we need to extract within our matcher function:
