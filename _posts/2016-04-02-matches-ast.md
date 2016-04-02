@@ -16,53 +16,59 @@ it's usually fairly simple to apply a transformation on it.
 Say, we'd like to transform CommonJS `require()` calls to ES6 import syntax.
 Given the following code:
 
-    var foo = require('foo');
+{% highlight js %}
+var foo = require('foo');
+{% endhighlight %}
 
 [Esprima][] produces the following AST:
 
-    {
-        "type": "VariableDeclaration",
-        "declarations": [
-            {
-                "type": "VariableDeclarator",
-                "id": {
+{% highlight json %}
+{
+    "type": "VariableDeclaration",
+    "declarations": [
+        {
+            "type": "VariableDeclarator",
+            "id": {
+                "type": "Identifier",
+                "name": "foo"
+            },
+            "init": {
+                "type": "CallExpression",
+                "callee": {
                     "type": "Identifier",
-                    "name": "foo"
+                    "name": "require"
                 },
-                "init": {
-                    "type": "CallExpression",
-                    "callee": {
-                        "type": "Identifier",
-                        "name": "require"
-                    },
-                    "arguments": [
-                        {
-                            "type": "Literal",
-                            "value": "foo",
-                            "raw": "'foo'"
-                        }
-                    ]
-                }
+                "arguments": [
+                    {
+                        "type": "Literal",
+                        "value": "foo",
+                        "raw": "'foo'"
+                    }
+                ]
             }
-        ],
-        "kind": "var"
-    }
+        }
+    ],
+    "kind": "var"
+}
+{% endhighlight %}
 
 To detect this `require()` pattern, we used to write code like this:
 
-    function isRequire(node) {
-        return node.type === 'VariableDeclaration' &&
-            node.kind === 'var' &&
-            node.declarations.length === 1 &&
-            node.declarations[0].id.type === 'Identifier' &&
-            node.declarations[0].init &&
-            node.declarations[0].init.type === 'CallExpression' &&
-            node.declarations[0].init.callee.type === 'Identifier' &&
-            node.declarations[0].init.callee.name === 'require' &&
-            node.declarations[0].init.arguments.length === 1 &&
-            node.declarations[0].init.arguments[0].type === 'Literal' &&
-            typeof node.declarations[0].init.arguments[0].value === 'string';
-    }
+{% highlight js %}
+function isRequire(node) {
+    return node.type === 'VariableDeclaration' &&
+        node.kind === 'var' &&
+        node.declarations.length === 1 &&
+        node.declarations[0].id.type === 'Identifier' &&
+        node.declarations[0].init &&
+        node.declarations[0].init.type === 'CallExpression' &&
+        node.declarations[0].init.callee.type === 'Identifier' &&
+        node.declarations[0].init.callee.name === 'require' &&
+        node.declarations[0].init.arguments.length === 1 &&
+        node.declarations[0].init.arguments[0].type === 'Literal' &&
+        typeof node.declarations[0].init.arguments[0].value === 'string';
+}
+{% endhighlight %}
 
 That's straight-forward to write, but damn hard to read.
 Even while looking at the AST above, it's hard to tell whether it's matching it correctly.
@@ -78,32 +84,34 @@ The popular [Lodash][] library provides a function [`_.matches`][matches] that d
 
 We can give it our AST pattern and it creates a function that matches against it:
 
-    const isRequire = \_.matches({
-        "type": "VariableDeclaration",
-        "declarations": [
-            {
-                "type": "VariableDeclarator",
-                "id": {
+{% highlight js %}
+const isRequire = \_.matches({
+    "type": "VariableDeclaration",
+    "declarations": [
+        {
+            "type": "VariableDeclarator",
+            "id": {
+                "type": "Identifier",
+                // "name": <any value>
+            },
+            "init": {
+                "type": "CallExpression",
+                "callee": {
                     "type": "Identifier",
-                    // "name": <any value>
+                    "name": "require"
                 },
-                "init": {
-                    "type": "CallExpression",
-                    "callee": {
-                        "type": "Identifier",
-                        "name": "require"
-                    },
-                    "arguments": [
-                        {
-                            "type": "Literal",
-                            // "value": <any string>
-                        }
-                    ]
-                }
+                "arguments": [
+                    {
+                        "type": "Literal",
+                        // "value": <any string>
+                    }
+                ]
             }
-        ],
-        "kind": "var"
-    });
+        }
+    ],
+    "kind": "var"
+});
+{% endhighlight %}
 
 With all the conditional logic gone, it's now straight-forward to understand what this function matches.
 
@@ -115,10 +123,12 @@ and that's not achievable by plain pattern matching.
 
 What if we could write custom assertions inside our AST pattern:
 
-    {
-        "type": "Literal",
-        "value": (v) => typeof v === "string"
-    }
+{% highlight js %}
+{
+    "type": "Literal",
+    "value": (v) => typeof v === "string"
+}
+{% endhighlight %}
 
 Then we could extend the pattern matching with conditional logic where needed.
 
@@ -126,94 +136,102 @@ Turns out, that's really easy to achieve as Lodash provides `_.matches()` extens
 We can use [`_.isMatchWith()`][isMatchWith] to add custom comparison logic.
 Here's our custom `matches()` function:
 
-    function matches(pattern) {
-        return (ast) => {
-            return \_.isMatchWith(ast, pattern, (value, matcher) => {
-                // When comparing against function, execute the function
-                if (typeof matcher === 'function') {
-                    return matcher(value);
-                }
-                // Otherwise fall back to built-in comparison logic
-            });
-        };
-    }
+{% highlight js %}
+function matches(pattern) {
+    return (ast) => {
+        return \_.isMatchWith(ast, pattern, (value, matcher) => {
+            // When comparing against function, execute the function
+            if (typeof matcher === 'function') {
+                return matcher(value);
+            }
+            // Otherwise fall back to built-in comparison logic
+        });
+    };
+}
+{% endhighlight %}
 
 Not only can we now write simple assertions like the one above,
 but we can also compose it with further call to `matches()`:
 
-    const isRequire = matches({
-        "type": "VariableDeclaration",
-        "declarations": (decs) => decs.length === 1 && matches([
-            {
-                "type": "VariableDeclarator",
-                "id": {
+{% highlight js %}
+const isRequire = matches({
+    "type": "VariableDeclaration",
+    "declarations": (decs) => decs.length === 1 && matches([
+        {
+            "type": "VariableDeclarator",
+            "id": {
+                "type": "Identifier",
+                // "name": <any value>
+            },
+            "init": {
+                "type": "CallExpression",
+                "callee": {
                     "type": "Identifier",
-                    // "name": <any value>
+                    "name": "require"
                 },
-                "init": {
-                    "type": "CallExpression",
-                    "callee": {
-                        "type": "Identifier",
-                        "name": "require"
-                    },
-                    "arguments": (args) => args.length === 1 && matches([
-                        {
-                            "type": "Literal",
-                            "value": (v) => typeof v === 'string'
-                        }
-                    ])(args)
-                }
+                "arguments": (args) => args.length === 1 && matches([
+                    {
+                        "type": "Literal",
+                        "value": (v) => typeof v === 'string'
+                    }
+                ])(args)
             }
-        ])(decs),
-        "kind": "var"
-    });
+        }
+    ])(decs),
+    "kind": "var"
+});
+{% endhighlight %}
 
 Depending your inclination, you might consider the above code really neat or really horrible.
 But we can alternatively extract it to several functions:
 
-    const isStringLiteral = matches({
-        "type": "Literal",
-        "value": (v) => typeof v === 'string'
-    });
+{% highlight js %}
+const isStringLiteral = matches({
+    "type": "Literal",
+    "value": (v) => typeof v === 'string'
+});
 
-    const isRequireDeclarator = matches({
-        "type": "VariableDeclarator",
-        "id": {
+const isRequireDeclarator = matches({
+    "type": "VariableDeclarator",
+    "id": {
+        "type": "Identifier",
+        // "name": <any value>
+    },
+    "init": {
+        "type": "CallExpression",
+        "callee": {
             "type": "Identifier",
-            // "name": <any value>
+            "name": "require"
         },
-        "init": {
-            "type": "CallExpression",
-            "callee": {
-                "type": "Identifier",
-                "name": "require"
-            },
-            "arguments": (args) => args.length === 1 && isStringLiteral(args[0])
-        }
-    });
+        "arguments": (args) => args.length === 1 && isStringLiteral(args[0])
+    }
+});
 
-    const isRequire = matches({
-        "type": "VariableDeclaration",
-        "declarations": (decs) => decs.length === 1 && isRequireDeclarator(decs[0]),
-        "kind": "var"
-    });
+const isRequire = matches({
+    "type": "VariableDeclaration",
+    "declarations": (decs) => decs.length === 1 && isRequireDeclarator(decs[0]),
+    "kind": "var"
+});
+{% endhighlight %}
 
 ## Extracting data
 
 With `isRequire()` implemented, we can easily detect the pattern and return new AST for ES6 import declaration:
 
-    if (isRequire(node)) {
-        return {
-            "type": "ImportDeclaration",
-            "specifiers": [
-                {
-                    "type": "ImportDefaultSpecifier",
-                    "local": node.declarations[0].id
-                }
-            ],
-            "source": node.declarations[0].init.arguments[0]
-        }
+{% highlight js %}
+if (isRequire(node)) {
+    return {
+        "type": "ImportDeclaration",
+        "specifiers": [
+            {
+                "type": "ImportDefaultSpecifier",
+                "local": node.declarations[0].id
+            }
+        ],
+        "source": node.declarations[0].init.arguments[0]
     }
+}
+{% endhighlight %}
 
 But wait...
 These `node.declarations[0].init.arguments[0]` expressions are just like the ones we tried to eliminate.
@@ -222,152 +240,168 @@ but we're partly repeating the AST that we already specified in the matcher func
 
 What if we could simply label the things we need to extract within our matcher function:
 
-    const matchRequire = matches({
-        "type": "VariableDeclarator",
-        "id": {
-            "type": "Identifier",
-            "name": extract("name")
-        },
-        "init": extract("init")
-    });
+{% highlight js %}
+const matchRequire = matches({
+    "type": "VariableDeclarator",
+    "id": {
+        "type": "Identifier",
+        "name": extract("name")
+    },
+    "init": extract("init")
+});
+{% endhighlight %}
 
 and instead of returning true, our matcher would return us an object with extracted values:
 
-    const {name, init} = matchRequire(node);
+{% highlight js %}
+const {name, init} = matchRequire(node);
+{% endhighlight %}
 
 Turns out, it's also fairly easy to implement.
 Our `extract()` will simply produce a function that creates and object with a single match:
 
-    function extract(fieldName) {
-        return (ast) => ({[fieldName]: ast});
-    }
+{% highlight js %}
+function extract(fieldName) {
+    return (ast) => ({[fieldName]: ast});
+}
+{% endhighlight %}
 
 Within `matches()` we then combine all these singular matches into a single object:
 
-    function matches(pattern) {
-        return (ast) => {
-            const extractedFields = {};
+{% highlight js %}
+function matches(pattern) {
+    return (ast) => {
+        const extractedFields = {};
 
-            const matches = \_.isMatchWith(ast, pattern, (value, matcher) => {
-                // When comparing against function, execute the function
-                if (typeof matcher === 'function') {
-                    const result = matcher(value);
-                    // When extracted fields returned,
-                    // combine them with other extracted fields
-                    if (typeof result === 'object') {
-                        Object.assign(extractedFields, result);
-                    }
-                    return result;
+        const matches = \_.isMatchWith(ast, pattern, (value, matcher) => {
+            // When comparing against function, execute the function
+            if (typeof matcher === 'function') {
+                const result = matcher(value);
+                // When extracted fields returned,
+                // combine them with other extracted fields
+                if (typeof result === 'object') {
+                    Object.assign(extractedFields, result);
                 }
-                // Otherwise fall back to built-in comparison logic
-            });
+                return result;
+            }
+            // Otherwise fall back to built-in comparison logic
+        });
 
-            return matches ? extractedFields : false;
-        };
-    }
+        return matches ? extractedFields : false;
+    };
+}
+{% endhighlight %}
 
 ## Extracting extended
 
 The nice thing about this implementation is that `extract()` can be composed
 with further conditional logic, even with additional `matches()`:
 
-    const isRequireDeclarator = matches({
-        "type": "VariableDeclarator",
-        "id": (id) => matches({
-            "type": "Identifier",
-        })(id) && extract("local")(id),
-    });
+{% highlight js %}
+const isRequireDeclarator = matches({
+    "type": "VariableDeclarator",
+    "id": (id) => matches({
+        "type": "Identifier",
+    })(id) && extract("local")(id),
+});
+{% endhighlight %}
 
 The above pattern is common enough to improve our `extract()` function
 with an optional second parameter to specify the nested pattern:
 
-    const isRequireDeclarator = matches({
-        "type": "VariableDeclarator",
-        "id": extract("local", {
-            "type": "Identifier",
-        }),
-    });
+{% highlight js %}
+const isRequireDeclarator = matches({
+    "type": "VariableDeclarator",
+    "id": extract("local", {
+        "type": "Identifier",
+    }),
+});
+{% endhighlight %}
 
 The implementation of this is somewhat similar to `matches()`.
 This time we'll need to combine extracted fields from nested matches:
 
-    function extract(fieldName, matcher) {
-      return (ast) => {
-        const extractedFields = {[fieldName]: ast};
+{% highlight js %}
+function extract(fieldName, matcher) {
+  return (ast) => {
+    const extractedFields = {[fieldName]: ast};
 
-        // Convert plain pattern into matcher function
-        if (typeof matcher === 'object') {
-            matcher = matches(matcher);
-        }
-
-        if (typeof matcher === 'function') {
-            const result = matcher(ast);
-            // When the nested match also contains extracted fields,
-            // combine them with current field
-            if (typeof result === 'object') {
-                return Object.assign(extractedFields, result);
-            }
-            // When the nested match failed, the whole matching failed.
-            if (!result) {
-                return false;
-            }
-        }
-
-        return extractedFields;
-      };
+    // Convert plain pattern into matcher function
+    if (typeof matcher === 'object') {
+        matcher = matches(matcher);
     }
+
+    if (typeof matcher === 'function') {
+        const result = matcher(ast);
+        // When the nested match also contains extracted fields,
+        // combine them with current field
+        if (typeof result === 'object') {
+            return Object.assign(extractedFields, result);
+        }
+        // When the nested match failed, the whole matching failed.
+        if (!result) {
+            return false;
+        }
+    }
+
+    return extractedFields;
+  };
+}
+{% endhighlight %}
 
 In the end the full implementation of our import transform reads like so:
 
-    const isStringLiteral = extract("local", {
-        "type": "Literal",
-        "value": (v) => typeof v === 'string'
-    });
+{% highlight js %}
+const isStringLiteral = extract("local", {
+    "type": "Literal",
+    "value": (v) => typeof v === 'string'
+});
 
-    const isRequireDeclarator = matches({
-        "type": "VariableDeclarator",
-        "id": extract("local", {
+const isRequireDeclarator = matches({
+    "type": "VariableDeclarator",
+    "id": extract("local", {
+        "type": "Identifier",
+    }),
+    "init": {
+        "type": "CallExpression",
+        "callee": {
             "type": "Identifier",
-        }),
-        "init": {
-            "type": "CallExpression",
-            "callee": {
-                "type": "Identifier",
-                "name": "require"
-            },
-            "arguments": (args) => args.length === 1 && isStringLiteral(args[0])
-        }
-    });
-
-    const isRequire = matches({
-        "type": "VariableDeclaration",
-        "declarations": (decs) => decs.length === 1 && isRequireDeclarator(decs[0]),
-        "kind": "var"
-    });
-
-    function createImportDeclaration({local, source}) {
-        return {
-            "type": "ImportDeclaration",
-            "specifiers": [
-                {
-                    "type": "ImportDefaultSpecifier",
-                    "local": local
-                }
-            ],
-            "source": source
-        }
+            "name": "require"
+        },
+        "arguments": (args) => args.length === 1 && isStringLiteral(args[0])
     }
+});
 
-    export default function doTransform(ast) {
-        estraverse.replace(ast, {
-            enter(node) {
-                const match = matchRequire(node);
-                if (match) {
-                    return createImportDeclaration(match);
-                }
+const isRequire = matches({
+    "type": "VariableDeclaration",
+    "declarations": (decs) => decs.length === 1 && isRequireDeclarator(decs[0]),
+    "kind": "var"
+});
+
+function createImportDeclaration({local, source}) {
+    return {
+        "type": "ImportDeclaration",
+        "specifiers": [
+            {
+                "type": "ImportDefaultSpecifier",
+                "local": local
             }
-        });
+        ],
+        "source": source
     }
+}
+
+export default function doTransform(ast) {
+    estraverse.replace(ast, {
+        enter(node) {
+            const match = matchRequire(node);
+            if (match) {
+                return createImportDeclaration(match);
+            }
+        }
+    });
+}
+{% endhighlight %}
 
 Happy days.
 
