@@ -49,7 +49,7 @@ Ning perspektiiv, et seda saab uues töökohas taas kord ohtralt olema,
 ei paelunud mind just kuigivõrd.  Lisaks selgus jutu käigus, et
 ettevõtte üheks tegevusalaks on DRM tehnoloogia arendamine, mis mulle
 aga ideoloogiliselt täiesti vastukarva.  Kirjutasin neile järgmisel
-päeval vastuseks, et minu sellele DRM värgile kaasa ei aita, ning
+päeval vastuseks, et mina sellele DRM värgile kaasa ei aita, ning
 neile rohkem ei kandideeri.
 
 ## Veebirakenduste arendaja (Beekman OÜ)
@@ -106,7 +106,7 @@ meetodite edukama kasutamise suunas, ning peagi pidi valmima uus vahva
 progemiskontor otse minu lähedal kesklinnas.  Alustuseks anti mulle ka
 test-ülesanne, mis pani mind taas kord mõtteid mõlgutama [PHP keele
 nõmeduse üle][PHP].  Ülesande sooritasin aga maksimumpunktidele ning
-ka hiljem kontoris koha peal tehtud JavaScripti progremine oli igati
+ka hiljem kontoris koha peal tehtud JavaScripti progemine oli igati
 edukas, mispeale nad mulle ka tööpakkumise tegid.
 
 ## Valikud valikud...
