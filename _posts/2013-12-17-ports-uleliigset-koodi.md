@@ -55,7 +55,7 @@ probleemid.
 Ma isiklikult ei koostaks SQL-i sellise konkateneerimiste jadana, vaid
 looksin lihtsalt mitmerealise stringi -- aga see on rohkem stiili
 küsimus.  Kuid eriliselt kummaline näib see kuidas sisestatakse
-sellesse SQL-i hetke kuupäeva ja aega:
+sellesse SQL-i hetke kuupäev ja aeg:
 
 {% highlight php startinline %}
 $currentDate = new DateTime();
@@ -85,8 +85,8 @@ if(isset($rows) && $rows != null && !empty($rows)){
 
 Siin on midagi ülearu:
 
-- `isset` kontrollib et muutuja poleks defineerimata või `null`.
-  `empty` kuntrollib et muutuja poleks tühi või `null`.  Seega
+- `isset` kontrollib, et muutuja poleks defineerimata või `null`.
+  `empty` kontrollib, et muutuja poleks tühi või `null`.  Seega
   kontroll `$rows != null` on üleliigne.
 
 - Eelnevast koodist näeme muutuja `$rows` defineerimist, seega on ka
@@ -139,7 +139,7 @@ Oo.. see sai küll palju lihtsam... aga mida kogu see tsükkel üldse
 saavutada püüab?  Kas see mitte ei kirjuta täpselt sama nimega välju
 ühest massiivist lihtsalt teise?
 
-Oi jah... tuleb välja et suurem osa sellest koodist on täiesti
+Oi jah... tuleb välja, et suurem osa sellest koodist on täiesti
 üleliigne.
 
 {% highlight php startinline %}
