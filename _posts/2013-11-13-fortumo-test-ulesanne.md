@@ -90,7 +90,7 @@ end
 `SmsNotifier`.  Millest lihtsa tsükliga üle käidi.
 
 **Seadete jaoks** tegin lihtsa Ruby faili, mis defineeris globaalse
-`CONST` konstandi:
+`CONF` konstandi:
 
 {% highlight ruby %}
 CONF = {
@@ -238,7 +238,7 @@ class StatusHandler
 end
 {% endhighlight %}
 
-Sedaviisi ei pea `StatusHandler` rakendame erikohtlemist `Timeout`
+Sedaviisi ei pea `StatusHandler` rakendama erikohtlemist `Timeout`
 tüüpi veale, vaid arvestab potentsiaalse ooteajaga iga
 staatusemuudatuse puhul.  Kommentaare ja tühje ridu arvestamata on uus
 kood täpselt sama pikk kui vana.
