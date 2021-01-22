@@ -36,7 +36,7 @@ JavaScripti poole pealt oli see fail aga paras sasipundar, sisaldades:
 - 12 linki erinevatele JavaScripti teekidele (osad minifitseeritud).
 - 5 linki Sprotlyzeri enda JavaScripti failidele.
 - 10 HTML-i sisest JavaScripti blokki.
-- sadakond onclick atribuuti funktsioonide väljakutsetaga.
+- sadakond onclick atribuuti funktsioonide väljakutsetega.
 
 Siit võis järeldada, et Sportlyzeril puudub JavaScripti
 konkateneerimise ja minifitseerimise süsteem, ning üldse on nende
@@ -108,7 +108,7 @@ Hakkas tööle, nagu valatud...
 
 Võta nüüd kinni, kas ma tegin midagi valesti, et need ajatemplid ei
 kattunud, või oli see ülesanne tahtlikult veits keerukam tehtud, või
-polnud ka Sportlyzeri arendajad ise teadlikud, et need andmestikud ei
+polnud ka Sportlyzeri arendajad ise teadlikud, et need andmestikud
 punkti pealt ei ühti.
 
 
