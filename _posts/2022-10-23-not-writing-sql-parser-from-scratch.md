@@ -12,7 +12,7 @@ image:
 ---
 
 While working on [SQL Formatter][] I've been on a lookout for a proper SQL parser.
-SQL Formatter library doesn't really properly parse the SQL it's formatting,
+For now this library doesn't really properly parse the SQL,
 which ultimately limits the kind of formatting this tool is able to perform.
 
 I've found two libraries that seem to fit the bill:
@@ -30,10 +30,9 @@ anyone who has dared to tackle this problem.
 
 ## The problem with AST
 
-Unfortunately neither of these libraries is suitable for use inside a formatter,
-because they produce an Abstract Syntax Tree (AST), which isn't great for a
-formatter, which should mostly only change whitespace and keep the rest of the code
-untouched, but in AST all of the following information is usually discarded:
+Unfortunately neither of these libraries is suitable for use inside a formatter
+because they produce an Abstract Syntax Tree (AST).
+In AST all of the following information is usually discarded:
 
 - Comments
 - Case of keywords (SQL is case-insensitive)
@@ -44,7 +43,8 @@ untouched, but in AST all of the following information is usually discarded:
 - Quoting of identifiers and strings.
 
 So, instead what I want is a Concrete Syntax Tree (CST) which preserves
-all this detailed syntactic information.
+all this detailed syntactic information, so my formatter could only
+change the whitespace and reproduce everything else exactly as it was before.
 
 I figured that it shouldn't be all that hard to add this extra CST-info
 to an existing AST-parser. After all, the hard part of describing all the
