@@ -86,7 +86,7 @@ In general there's two solutions for this:
 - a single parser that behaves differently depending on current SQL dialect,
 - a separate parser for each SQL dialect.
 
-## Using assertions inside single parser
+## Approach #1: Using assertions inside single parser
 
 As I'm using [Peggy][] as my parser generator,
 it's possible to pass arguments to the parser and check them during parsing.
@@ -142,7 +142,7 @@ which behaves slightly differently depending on the dialect option passed in.
 
 The downside is the dealing with these `undefined` entries in parse result.
 
-## Generating multiple parsers from one grammar
+## Approach #2: Generating multiple parsers from one grammar
 
 This approach is not directly supported by Peggy,
 but one can write a [plugin][] to make it possible.
