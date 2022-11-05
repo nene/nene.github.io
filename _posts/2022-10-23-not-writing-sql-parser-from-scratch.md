@@ -2,13 +2,11 @@
 layout: post
 title: I'm not writing an SQL Parser from scratch
 description: "How I decided to not roll my own SQL parser and rely on the work of others"
-modified: 2022-10-23
+modified: 2022-11-05
 category: articles
 tags: []
 image:
-  feature: texture-feature-04.jpg
-  credit: Texture Lovers
-  creditlink: http://texturelovers.com
+  feature: sql-grammar.png
 ---
 
 While working on [SQL Formatter][] I've been on a lookout for a proper SQL parser.
