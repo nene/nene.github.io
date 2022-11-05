@@ -92,7 +92,7 @@ As I'm using [Peggy][] as my parser generator,
 it's possible to pass arguments to the parser and check them during parsing.
 I can writing something like this (in Peggy grammar):
 
-```pegjs
+```
 select_option
   = ALL
   / DISTINCT
@@ -114,7 +114,7 @@ The above is somewhat ugly and repetitive though.
 I can improve things my extracting the `&{ ... }` block to a separate rule
 and assert the matching of that rule:
 
-```pegjs
+```
 select_option
   = ALL
   / DISTINCT
@@ -129,7 +129,7 @@ This looks much better, unfortunately it doesn't work quite as intended.
 The problem is that these `&mysql` and `&oracle` rules introduce an empty `undefined` entry to our parse result.
 I'll have to explicitly extract just the part that's needed:
 
-```pegjs
+```
 select_option
   = ALL
   / DISTINCT
@@ -149,7 +149,7 @@ but one can write a [plugin][] to make it possible.
 
 I've written [a plugin][generate-plugin] to extend Peggy grammar with the following syntax:
 
-```pegjs
+```
 select_option
   = ALL / DISTINCT
 
@@ -165,21 +165,21 @@ when generating a parser for that particular dialect.
 For example, when running parser-generator for MySQL,
 the grammar will get pre-processed to be as follows:
 
-```pegjs
+```
 select_option
   = ALL / DISTINCT / DISTINCTROW
 ```
 
 For oracle, the result will be:
 
-```pegjs
+```
 string_literal
   = ALL / DISTINCT / UNIQUE
 ```
 
 And for any other dialect besides these:
 
-```pegjs
+```
 string_literal
   = ALL / DISTINCT
 ```
