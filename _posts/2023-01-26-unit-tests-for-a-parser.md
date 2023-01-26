@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Unit tests for a parser
-description: "..."
+description: "How to test your parser with minimum amount of test code"
 modified: 2023-01-26
 category: articles
 tags: []
