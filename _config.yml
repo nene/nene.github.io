@@ -12,10 +12,10 @@ owner:
   bio:            "Väike alatu progeja."
   email:          info@triin.net
   # Social networking links are used in author-bio sidebar. Update and remove as you like.
-  twitter:        renku
-  facebook:       rene.saarsoo
+  twitter:
+  facebook:
   github:         nene
-  linkedin:
+  linkedin:       rene-saarsoo
   instagram:
   lastfm:
   tumblr:
