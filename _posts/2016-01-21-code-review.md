@@ -5,10 +5,6 @@ description: "Writing code that passes any review and doing an amazing review"
 modified: 2016-01-21
 category: articles
 tags: []
-image:
-    feature: texture-feature-05.jpg
-    credit: Texture Lovers
-    creditlink: http://texturelovers.com
 ---
 
 *This is a repost of XRebel frontend code reviewing guide, posted initially to internal wiki.*

@@ -5,10 +5,6 @@ description: "Käisin Fortumos koodi kirjutamas."
 modified: 2013-11-13
 category: articles
 tags: []
-image:
-  feature: texture-feature-05.jpg
-  credit: Texture Lovers
-  creditlink: http://texturelovers.com
 ---
 
 
