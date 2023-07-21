@@ -12,10 +12,9 @@ But most of them fail to see that this isn't a feature, but a bug in the languag
 
 <p style="background: #efefef; padding: 0.5em 1em">
 <strong>Note:</strong> Throughout this article I'll be using the term “null” in normal font
-when referring to any null-like value,
-whatever it happens to be called (<code>null</code>, <code>undefined</code>, <code>nil</code>, etc).
-When speaking specifically about JavaScript values <code>null</code> and <code>undefined</code>,
-I'll distinguish with a <code>monospace font</code>.
+when referring to any null-like value, whatever it happens to be called.
+I'll be using monospace font when speaking specifically about JavaScript values
+<code>null</code> and <code>undefined</code>.
 </p>
 
 While many languages have copied the [billion-dollar mistake][null-mistake] of Tony Hoare
