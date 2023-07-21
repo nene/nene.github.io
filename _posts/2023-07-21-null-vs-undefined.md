@@ -34,7 +34,7 @@ But which one to choose?
 
 ### Advantages of `undefined`
 
-The main advantage of `undefined` is that it's deeply ingrained to the JavaScript language.
+The main advantage of `undefined` is that it's deeply integrated with the JavaScript language.
 Lots of language constructs will provide you with `undefined` by default:
 
 - Unassigned variables have value `undefined`.
