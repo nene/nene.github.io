@@ -65,7 +65,7 @@ with the pretty clear advantages of `undefined`.
 
 I have adopted a no-`null` policy in most of my personal open-source projects
 and I've also managed to adopt this style in some commercial projects I've been
-involved in.
+involved with.
 
 I haven't really run into any problems with this.
 There definitely are times where you do need to use `null` here or there.
