@@ -7,7 +7,7 @@ category: articles
 tags: []
 ---
 
-Internet contains lots of tutorials describing the differences between `null` and `undefined`.
+The internet contains lots of tutorials describing the differences between `null` and `undefined`.
 But most of them fail to see that this isn't a feature, but a bug in the language.
 
 <p style="background: #efefef; padding: 0.5em 1em">
