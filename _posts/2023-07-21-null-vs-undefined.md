@@ -8,7 +8,7 @@ tags: []
 ---
 
 The internet contains lots of tutorials describing the differences between `null` and `undefined`.
-But most of them fail to see that this isn't a feature, but a bug in the language.
+But most of them fail to see that this isn't a feature, but rather a bug in the language.
 
 <p style="background: #efefef; padding: 0.5em 1em">
 <strong>Note:</strong> Throughout this article I'll be using the term “null” in normal font
@@ -22,6 +22,7 @@ by introducing a null values in the first place,
 JavaScript author Brendan Eich managed to double the mistake by introducing two null values:
 `null` and `undefined`.
 The original goal of `null` being [better interop with Java][java-interop].
+Like many Java-driven changes in JavaScript, this made the language worse.
 
 Luckily nowadays we can use TypeScript to track which values can be nullable.
 This eliminates the need for null-checks where they're not needed and
