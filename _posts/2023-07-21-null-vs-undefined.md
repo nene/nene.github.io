@@ -2,7 +2,7 @@
 layout: post
 title: Should you prefer Null or Undefined in JavaScript?
 description: "Spoiler: avoid null, always use undefined."
-modified: 2023-07-21
+modified: 2023-07-31
 category: articles
 tags: []
 ---
@@ -65,7 +65,8 @@ with the pretty clear advantages of `undefined`.
 
 I have adopted a no-`null` policy in most of my personal open-source projects
 and I've also managed to adopt this style in some commercial projects I've been
-involved with.
+involved with. I even wrote an [ESLint no-null plugin][plugin] which notifies
+you about nulls in your codebase.
 
 I haven't really run into any problems with this.
 There definitely are times where you do need to use `null` here or there.
@@ -110,3 +111,4 @@ Don't make the same mistake, and just use `undefined` instead.
 [null-mistake]: https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
 [java-interop]: https://twitter.com/BrendanEich/status/1271993445180010496?s=20
 [react-null]: https://legacy.reactjs.org/blog/2014/07/17/react-v0.11.html#rendering-to-null
+[plugin]: https://www.npmjs.com/package/eslint-plugin-no-null
